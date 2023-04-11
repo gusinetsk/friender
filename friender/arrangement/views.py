@@ -1,21 +1,26 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views import View
+from .models import Users,Establishments
 import datetime
 
 
-# функция представления (вьюшка)
-def current_datetime(request):
-    now = datetime.datetime.now()
-    html = f"<html><body>It is now {now}.</body></html>"
-    return HttpResponse(html)
+def main_page(request):
+    return render(request,'main.html')
 
 
-def greeting(request, name):
-    return HttpResponse(f"<h1>Hello {name}</h1>")
+def all_friends(request):
+    context = {
+        'friends': Users.objects.all(),
+    }
+    return render(request,'friends.html',context = context)
 
-def year_archive(request,year):
-    return HttpResponse(f'<h1>{year}</h1>')
+def all_establishment(request):
+    context = {
+        'establishments': Establishments.objects.all()
+    }
+    return render(request,'establishments.html',context = context)
 
-class Example(View):
-    def get(self,request, *args,**kwargs):
-        return HttpResponse(f"This is class base view")
+
+
+

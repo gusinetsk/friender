@@ -1,0 +1,42 @@
+{% extends 'base.html'%}
+
+
+{%block title %}friends{% endblock %}
+
+{% block content %}
+
+<table class="table table-info table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Surname</th>
+      <th scope="col">Age</th>
+        <th scope="col">City</th>
+        <th scope="col">Sex</th>
+        <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for friend in friends %}
+    <tr>
+              <td>{{ friend.name }}</td>
+            <td>{{ friend.surname }}</td>
+            <td>{{ friend.age }}</td>
+            <td>{{ friend.city }}</td>
+            <td>{{ friend.sex }}</td>
+        {% if friend.email%}
+            <td>{{ friend.email }}</td>
+        {% else %}
+            <td></td>
+        {% endif %}
+
+        </tr>
+      {% endfor %}
+  </tbody>
+</table>
+
+
+
+{% endblock %}
+
+

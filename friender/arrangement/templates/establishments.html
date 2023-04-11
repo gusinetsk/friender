@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+{%block title %}Establishments{% endblock %}
+
+
+
+{% block content %}
+
+
+<table class="table table-warning table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Address</th>
+        <th scope="col">Phone</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for establishment in establishments %}
+    <tr>
+              <td>{{ establishment.name }}</td>
+            <td>{{ establishment.category }}</td>
+            <td>{{ establishment.addres }}</td>
+            <td>{{ establishment.phone }}</td>
+
+        </tr>
+      {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
